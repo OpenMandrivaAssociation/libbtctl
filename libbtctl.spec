@@ -20,7 +20,7 @@ BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	autoconf2.5 >= 2.54
 BuildRequires:	libgnomeui2-devel libGConf2-devel
 BuildRequires:	bluez-devel gtk-doc perl-XML-Parser
-BuildRequires:	automake1.8 intltool
+BuildRequires:	automake intltool
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	openobex-devel >= 1.1
 
