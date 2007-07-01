@@ -12,7 +12,11 @@ Release: 	%{release}
 
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbtctl/%{name}-%{version}.tar.bz2
 #gw fix for new libopenobex detection
-Patch: libbtctl-0.6.0-new-openobex.patch
+Patch0:		libbtctl-0.6.0-new-openobex.patch
+Patch1:		libbtctl-0.6.0-libdir.patch
+Patch2:		libbtctl-0.4.1-pydir.patch
+Patch3:		libbtctl-0.8.0-crash.patch
+Patch4:		libbtctl-0.6.0-print.patch
 URL:		http://usefulinc.com/software/gnome-bluetooth/
 License:	GPL
 Group:		System/Libraries
@@ -20,7 +24,7 @@ BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	autoconf2.5 >= 2.54
 BuildRequires:	libgnomeui2-devel libGConf2-devel
 BuildRequires:	bluez-devel gtk-doc perl-XML-Parser
-BuildRequires:	intltool automake
+BuildRequires:	intltool python-devel
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	openobex-devel >= 1.1
 
@@ -68,10 +72,14 @@ This is the python wrapper for %name.
 
 %prep
 %setup -q
-%patch -p1 -b .openobex
-aclocal-1.8
+%patch0 -p1 -b .openobex
+%patch1 -p1 -b .libdir
+%patch2 -p1 -b .pydir
+%patch3 -p1 -b .crash
+%patch4 -p1 -b .print
+aclocal
 autoconf
-automake-1.8
+automake
 
 %build
 %configure2_5x --enable-shared --disable-mono
