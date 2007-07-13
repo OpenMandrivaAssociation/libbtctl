@@ -1,6 +1,6 @@
 %define name	libbtctl
-%define version 0.8.2
-%define release %mkrel 2
+%define version 0.9.0
+%define release %mkrel 1
 
 %define major	4
 %define libname %mklibname btctl %{major}
@@ -11,9 +11,6 @@ Version: 	%{version}
 Release: 	%{release}
 
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbtctl/%{name}-%{version}.tar.bz2
-#gw fix for new libopenobex detection
-Patch0:		libbtctl-0.6.0-new-openobex.patch
-Patch1:		libbtctl-0.6.0-libdir.patch
 Patch2:		libbtctl-0.4.1-pydir.patch
 Patch3:		libbtctl-0.8.0-crash.patch
 Patch4:		libbtctl-0.6.0-print.patch
@@ -72,8 +69,6 @@ This is the python wrapper for %name.
 
 %prep
 %setup -q
-%patch0 -p1 -b .openobex
-%patch1 -p1 -b .libdir
 %patch2 -p1 -b .pydir
 %patch3 -p1 -b .crash
 %patch4 -p1 -b .print
@@ -90,10 +85,6 @@ make
 rm -rf $RPM_BUILD_ROOT
 %makeinstall_std
 %find_lang %name
-%if %_lib != lib
-mkdir -p %buildroot%{py_platsitedir}/
-mv %buildroot%{py_puresitedir}/* %buildroot%{py_platsitedir}/
-%endif
 rm -f %buildroot%{py_platsitedir}/*a
 
 %clean
