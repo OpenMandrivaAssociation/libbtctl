@@ -17,7 +17,6 @@ Patch4:		libbtctl-0.6.0-print.patch
 URL:		http://usefulinc.com/software/gnome-bluetooth/
 License:	GPL
 Group:		System/Libraries
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	autoconf2.5 >= 2.54
 BuildRequires:	libgnomeui2-devel libGConf2-devel
 BuildRequires:	bluez-devel gtk-doc perl-XML-Parser
