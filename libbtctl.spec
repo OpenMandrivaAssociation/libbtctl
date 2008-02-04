@@ -1,6 +1,6 @@
 %define name	libbtctl
-%define version 0.9.0
-%define release %mkrel 3
+%define version 0.10.0
+%define release %mkrel 1
 
 %define major 4
 %define libname %mklibname btctl %{major}
@@ -13,7 +13,6 @@ Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbtctl/%{name}-%{version}.tar.bz2
 Patch2:		libbtctl-0.4.1-pydir.patch
 Patch3:		libbtctl-0.8.0-crash.patch
-Patch4:		libbtctl-0.6.0-print.patch
 URL:		http://usefulinc.com/software/gnome-bluetooth/
 License:	GPLv2+
 Group:		System/Libraries
@@ -74,7 +73,6 @@ This is the python wrapper for %name.
 %setup -q
 %patch2 -p1 -b .pydir
 %patch3 -p1 -b .crash
-%patch4 -p1 -b .print
 aclocal
 autoconf
 automake
