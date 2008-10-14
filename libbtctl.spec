@@ -13,6 +13,8 @@ Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbtctl/%{name}-%{version}.tar.bz2
 Patch2:		libbtctl-0.4.1-pydir.patch
 Patch3:		libbtctl-0.8.0-crash.patch
+# From upstream SVN: port to Bluez 4 - AdamW 2008/10
+Patch4:		libbtctl-0.10.0-bluez4.patch
 URL:		http://usefulinc.com/software/gnome-bluetooth/
 License:	GPLv2+
 Group:		System/Libraries
@@ -73,6 +75,7 @@ This is the python wrapper for %name.
 %setup -q
 %patch2 -p1 -b .pydir
 %patch3 -p1 -b .crash
+%patch4 -p1 -b .bluez4
 aclocal
 autoconf
 automake
