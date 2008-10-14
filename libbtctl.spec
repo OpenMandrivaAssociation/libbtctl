@@ -1,6 +1,6 @@
 %define name	libbtctl
 %define version 0.10.0
-%define release %mkrel 2
+%define release %mkrel 3
 
 %define major 4
 %define libname %mklibname btctl %{major}
@@ -37,7 +37,7 @@ Features planned in the near future include:
 %package -n %{libname}
 Group:		System/Libraries
 Summary:	GNOME bluetooth control library
-Requires:	bluez-utils
+Requires:	bluez
 Provides:	%{name} = %{version}-%{release}
 
 %description -n %{libname}
