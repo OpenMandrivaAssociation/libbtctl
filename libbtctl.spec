@@ -1,8 +1,8 @@
 %define name	libbtctl
-%define version 0.10.0
-%define release %mkrel 4
+%define version 0.11.1
+%define release %mkrel 1
 
-%define major 4
+%define major 6
 %define libname %mklibname btctl %{major}
 %define develname %mklibname btctl -d
 
@@ -11,10 +11,9 @@ Summary: 	GNOME bluetooth control library
 Version: 	%{version}
 Release: 	%{release}
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbtctl/%{name}-%{version}.tar.bz2
+Patch:		libbtctl-0.11.1-format-strings.patch
 Patch2:		libbtctl-0.4.1-pydir.patch
 Patch3:		libbtctl-0.8.0-crash.patch
-# From upstream SVN: port to Bluez 4 - AdamW 2008/10
-Patch4:		libbtctl-0.10.0-bluez4.patch
 URL:		http://usefulinc.com/software/gnome-bluetooth/
 License:	GPLv2+
 Group:		System/Libraries
@@ -73,12 +72,10 @@ This is the python wrapper for %name.
 
 %prep
 %setup -q
+%patch -p1
 %patch2 -p1 -b .pydir
 %patch3 -p1 -b .crash
-%patch4 -p1 -b .bluez4
-aclocal
-autoconf
-automake
+autoreconf -fi
 
 %build
 %configure2_5x --enable-shared --disable-mono
