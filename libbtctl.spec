@@ -1,6 +1,6 @@
 %define name	libbtctl
 %define version 0.11.1
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 6
 %define libname %mklibname btctl %{major}
