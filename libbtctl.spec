@@ -7,7 +7,7 @@ Summary: 	GNOME bluetooth control library
 Version: 	0.11.1
 Release: 	6
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbtctl/%{name}-%{version}.tar.bz2
-Patch:		libbtctl-0.11.1-format-strings.patch
+Patch0:		libbtctl-0.11.1-format-strings.patch
 Patch2:		libbtctl-0.4.1-pydir.patch
 Patch3:		libbtctl-0.8.0-crash.patch
 Patch4:		libbtctl_fix_broken_check.patch
@@ -15,15 +15,15 @@ URL:		http://usefulinc.com/software/gnome-bluetooth/
 License:	GPLv2+
 Group:		System/Libraries
 
-BuildRequires:	libgnomeui2-devel
-BuildRequires:	libGConf2-devel
-BuildRequires:	bluez-devel
 BuildRequires:	gtk-doc
-BuildRequires:	perl-XML-Parser
 BuildRequires:	intltool
-BuildRequires:	python-devel
-BuildRequires:	pygtk2.0-devel
-BuildRequires:	openobex-devel >= 1.1
+BuildRequires:	perl-XML-Parser
+BuildRequires:	pkgconfig(bluez)
+BuildRequires:	pkgconfig(gconf-2.0)
+BuildRequires:	pkgconfig(libgnomeui-2.0)
+BuildRequires:	pkgconfig(openobex) >= 1.1
+BuildRequires:	pkgconfig(pygtk-2.0)
+BuildRequires:	pkgconfig(python)
 
 %description
 Current features include:
