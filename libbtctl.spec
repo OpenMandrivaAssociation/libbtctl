@@ -1,15 +1,11 @@
-%define name	libbtctl
-%define version 0.11.1
-%define release %mkrel 5
-
 %define major 6
 %define libname %mklibname btctl %{major}
 %define develname %mklibname btctl -d
 
-Name: 	 	%{name}
+Name: 	 	libbtctl
 Summary: 	GNOME bluetooth control library
-Version: 	%{version}
-Release: 	%{release}
+Version: 	0.11.1
+Release: 	6
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbtctl/%{name}-%{version}.tar.bz2
 Patch:		libbtctl-0.11.1-format-strings.patch
 Patch2:		libbtctl-0.4.1-pydir.patch
@@ -18,11 +14,14 @@ Patch4:		libbtctl_fix_broken_check.patch
 URL:		http://usefulinc.com/software/gnome-bluetooth/
 License:	GPLv2+
 Group:		System/Libraries
-BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	autoconf2.5 >= 2.54
-BuildRequires:	libgnomeui2-devel libGConf2-devel
-BuildRequires:	bluez-devel gtk-doc perl-XML-Parser
-BuildRequires:	intltool python-devel
+
+BuildRequires:	libgnomeui2-devel
+BuildRequires:	libGConf2-devel
+BuildRequires:	bluez-devel
+BuildRequires:	gtk-doc
+BuildRequires:	perl-XML-Parser
+BuildRequires:	intltool
+BuildRequires:	python-devel
 BuildRequires:	pygtk2.0-devel
 BuildRequires:	openobex-devel >= 1.1
 
@@ -66,54 +65,39 @@ Static libraries and header files from %name
 %package -n python-%{name}
 Group:		Development/Python
 Summary:	Bluetooth Python bindings
-Conflicts:	%{name} < 0.5.0-2mdk
 
 %description -n python-%{name}
 This is the python wrapper for %name.
 
 %prep
 %setup -q
-%patch -p1
-%patch2 -p1 -b .pydir
-%patch3 -p1 -b .crash
-%patch4 -p1 -b .lib
-autoreconf -fi
+%apply_patches
 
 %build
-%configure2_5x --enable-shared --disable-mono
+autoreconf -fi
+%configure2_5x \
+	--disable-static \
+	--enable-shared \
+	--disable-mono
 # parallel build fails
 make
 										
 %install
 rm -rf %{buildroot}
 %makeinstall_std
+find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 %find_lang %{name}
-rm -f %{buildroot}%{py_platsitedir}/*a
-
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
 
 %files -n %{libname} -f %{name}.lang
-%defattr(-,root,root)
 %{_libdir}/libbtctl.so.%{major}*
 
 %files -n python-%{name}
-%defattr(-,root,root)
 %{py_platsitedir}/btctl.so
 
 %files -n %{develname}
-%defattr(-,root,root)
 %doc AUTHORS ChangeLog README
 %doc %{_datadir}/gtk-doc/html/%{name}
 %{_includedir}/%{name}
 %{_libdir}/*.so
-%attr(644,root,root) %{_libdir}/*.la
-%{_libdir}/*.a
 %{_libdir}/pkgconfig/%{name}.pc
+
