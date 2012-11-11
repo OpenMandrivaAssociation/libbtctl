@@ -1,0 +1,12 @@
+diff -p -up libbtctl-0.11.1/src/btctlimpl.c~ libbtctl-0.11.1/src/btctlimpl.c
+--- libbtctl-0.11.1/src/btctlimpl.c~	2008-10-08 03:25:33.000000000 +0200
++++ libbtctl-0.11.1/src/btctlimpl.c	2009-02-20 09:33:08.000000000 +0100
+@@ -436,7 +436,7 @@ do_search(BtctlController *bc, bdaddr_t 
+ 		if (*err) {
+ 			g_set_error (err, BTCTL_ERROR,
+ 			     BTCTL_ERROR_SERVICE_SEARCH_FAILED,
+-			     g_strdup_printf(_("Service search failed on device %s"), str));
++				     "%s", g_strdup_printf(_("Service search failed on device %s"), str));
+ 		}
+ 		sdp_close(sess);
+ 		return -1;

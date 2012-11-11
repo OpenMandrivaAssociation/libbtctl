@@ -1,0 +1,12 @@
+--- libbtctl-0.4.1/src/Makefile.am.pydir	2004-07-22 14:31:28.556259792 +0200
++++ libbtctl-0.4.1/src/Makefile.am	2004-07-22 14:31:47.964309320 +0200
+@@ -16,7 +16,7 @@
+ 
+ lib_LTLIBRARIES = libbtctl.la
+ if HAVE_PYTHON
+-pydir = $(PYTHON_PREFIX)/lib/python$(PYTHON_VERSION)/site-packages/
++pydir = $(pyexecdir)
+ py_LTLIBRARIES = btctl.la
+ else
+ pydir =
+

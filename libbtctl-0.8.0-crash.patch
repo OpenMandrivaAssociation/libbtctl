@@ -1,0 +1,22 @@
+--- libbtctl-0.8.2/src/btctl.c.crash	2007-02-28 14:25:52.000000000 +0100
++++ libbtctl-0.8.2/src/btctl.c	2007-02-28 14:25:55.000000000 +0100
+@@ -55,7 +55,9 @@
+ 
+ static gint btctl_controller_signals[LAST_SIGNAL] = { 0 } ;
+ 
++#define g_intern_static_string(s) s
+ G_DEFINE_TYPE(BtctlController, btctl_controller, G_TYPE_OBJECT)
++#undef g_intern_static_string
+ 
+ static void btctl_set_property(GObject      *object,
+ 			       guint         prop_id,
+@@ -163,7 +165,7 @@
+ {
+   static GQuark quark = 0;
+   if (quark == 0)
+-    quark = g_quark_from_static_string ("btctl-error-quark");
++    quark = g_quark_from_string ("btctl-error-quark");
+   return quark;
+ }
+ 
+
