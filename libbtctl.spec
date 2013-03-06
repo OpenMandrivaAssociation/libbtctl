@@ -73,6 +73,9 @@ This is the python wrapper for %{name}.
 %setup -q
 %apply_patches
 
+sed -i -e 's|AM_PROG_CC_STDC|AC_PROG_CC|g' \
+	configure*
+
 %build
 autoreconf -fi
 %configure2_5x \
