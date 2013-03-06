@@ -83,7 +83,7 @@ autoreconf -fi
 	--enable-shared \
 	--disable-mono
 # parallel build fails
-make
+make LIBS='-lopenobex'
 
 %install
 %makeinstall_std
