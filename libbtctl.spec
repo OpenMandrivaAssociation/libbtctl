@@ -7,7 +7,7 @@
 Summary:	GNOME bluetooth control library
 Name:		libbtctl
 Version:	0.11.1
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		System/Libraries
 Url:		http://usefulinc.com/software/gnome-bluetooth/
