@@ -71,7 +71,7 @@ This is the python wrapper for %{name}.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 sed -i -e 's|AM_PROG_CC_STDC|AC_PROG_CC|g' \
 	configure*
