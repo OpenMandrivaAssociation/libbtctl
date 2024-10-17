@@ -10,7 +10,7 @@ Version:	0.11.1
 Release:	7
 License:	GPLv2+
 Group:		System/Libraries
-Url:		http://usefulinc.com/software/gnome-bluetooth/
+Url:		https://usefulinc.com/software/gnome-bluetooth/
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/libbtctl/%{url_ver}/%{name}-%{version}.tar.bz2
 Patch0:		libbtctl-0.11.1-format-strings.patch
 Patch2:		libbtctl-0.4.1-pydir.patch
