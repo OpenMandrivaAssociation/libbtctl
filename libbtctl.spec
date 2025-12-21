@@ -17,6 +17,11 @@ Patch2:		libbtctl-0.4.1-pydir.patch
 Patch3:		libbtctl-0.8.0-crash.patch
 Patch4:		libbtctl_fix_broken_check.patch
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	perl-XML-Parser
